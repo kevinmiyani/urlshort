@@ -15,15 +15,12 @@ const port = process.env.PORT || 4000;
 
 Connection(username, password);
 
-app.use(express.static(__dirname + "public"));
-app.use(express.urlencoded({ extended: false }));
 
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "my-frontend", "build")));
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "my-frontend", "build", "index.html"));
+  res.redirect("https://shortlink-opal.vercel.app/");
 });
 
 app.get("/getdata", async (req, res) => {
