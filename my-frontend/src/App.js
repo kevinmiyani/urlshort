@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import { common } from "./config/call";
@@ -31,7 +29,7 @@ function App() {
     e.preventDefault();
 
     if (!fullUrl) {
-      /* eslint-disable */
+/* eslint-disable-next-line */
       alert(
         "Please enter a valid URL. The URL must include a protocol (http:// or https://) and a domain name ending in .com, .org, or similar."
       );
