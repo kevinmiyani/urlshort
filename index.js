@@ -45,6 +45,39 @@ app.post("/shortUrls", async (req, res) => {
     res.status(500).json({ error: "Failed to create short URL" });
   }
 });
+
+app.get("/getpagedata", async (req, res) => {
+  try {
+    console.log("req.query.page", req.query);
+    const page = parseInt(req.query.page);
+    const limit = parseInt(req.query.limit);
+    const skip = (page - 1) * limit;
+
+    const shortUrls = await ShortUrl.find().skip(skip).limit(limit);
+    const totalCount = await ShortUrl.countDocuments();
+
+    res.json({
+      shortUrls,
+      totalPages: Math.ceil(totalCount / limit),
+      currentPage: page,
+    });
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+app.post("/addurls", async (req, res) => {
+  const hundredurls = await genratehundred();
+  shortUrl
+    .insertMany(hundredurls)
+    .then((respose) => {
+      res.status(201).json({ message: "data added succesfully" });
+    })
+    .catch((error) => {
+      res.status(500).json({ error: "Failed Add Data", error: error });
+    });
+});
+
 app.get("/:shortUrl", async (req, res) => {
   const shortUrl = await ShortUrl.findOne({ short: req.params.shortUrl });
   if (shortUrl == null) return res.sendStatus(404);
@@ -55,6 +88,9 @@ app.get("/:shortUrl", async (req, res) => {
   res.redirect(shortUrl.full);
 });
 
+
+
 app.listen(port, () =>
   console.log(`Server is running successfully on PORT ${port}`)
 );
+
