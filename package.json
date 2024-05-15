@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "build": "npm install --prefix my-frontend && npm run build --prefix my-frontend && npm install --prefix server",
+    "build": "cd my-frontend && npm install && npm run build && cd .. && npm install --prefix server",
     "start": "nodemon index.js"
   },
   "author": "",
