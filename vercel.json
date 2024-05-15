@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "index.js",
+      "src": "server/index.js",
       "use": "@vercel/node"
     },
 
@@ -10,7 +10,7 @@
       "src": "my-frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "build"
+        "distDir": "my-frontend/build"
       }
     }
   ],
@@ -18,6 +18,10 @@
     {
       "src": "/(.*)",
       "dest": "index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "my-frontend/build/$1"
     }
   ]
 }
