@@ -28,7 +28,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!(/[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi).test(fullUrl)) {
+    if (!fullUrl) {
       alert(
         "Please enter a valid URL. The URL must include a protocol (http:// or https://) and a domain name ending in .com, .org, or similar."
       );
