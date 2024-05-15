@@ -65,7 +65,6 @@ function App() {
 
   const handleRedirect = (shortUrl) => {
     window.open(shortUrl, "_blank");
-    // window.open("http://localhost:8000/" + shortUrl);
   };
 
   return (
@@ -152,12 +151,6 @@ function App() {
                   >
                     Copy
                   </button>
-                  {/* <button
-                    className="btn btn-primary btn-sm"
-                    onClick={() => handleRedirect(shortUrl.short)}
-                  >
-                    Redirect
-                  </button> */}
                 </td>
               </tr>
             ))}
