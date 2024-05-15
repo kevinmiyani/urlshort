@@ -29,6 +29,7 @@ function App() {
     e.preventDefault();
 
     if (!fullUrl) {
+      /* eslint-disable */
       alert(
         "Please enter a valid URL. The URL must include a protocol (http:// or https://) and a domain name ending in .com, .org, or similar."
       );
